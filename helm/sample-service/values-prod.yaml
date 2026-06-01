@@ -1,0 +1,17 @@
+replicaCount: 4
+
+ingress:
+  className: alb
+
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+
+autoscaling:
+  enabled: true
+  minReplicas: 4
+  maxReplicas: 20
+
+externalSecrets:
+  enabled: true
+  

@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: sample-service-prod
+  namespace: argocd
+
+spec:
+
+  project: production
+
+  source:
+    repoURL: https://github.com/your-org/devops-onboarding.git # change it to the correct repo URL
+    targetRevision: main
+
+    path: helm/sample-service
+
+    helm:
+      valueFiles:
+        - values-prod.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sample-service-prod
+
+  syncPolicy:
+
+    automated:
+      prune: true
+
+    syncOptions:
+      - CreateNamespace=true

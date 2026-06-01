@@ -1,0 +1,13 @@
+ingress:
+  className: nginx
+
+autoscaling:
+  enabled: false
+
+externalSecrets:
+  enabled: false
+
+image:
+  repository: sample-service
+  tag: local
+  pullPolicy: IfNotPresent
